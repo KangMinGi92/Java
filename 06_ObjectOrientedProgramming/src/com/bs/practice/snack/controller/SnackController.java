@@ -1,0 +1,29 @@
+package com.bs.practice.snack.controller;
+
+import com.bs.practice.snack.common.MinusArgumentException;
+import com.bs.practice.snack.model.vo.Snack;
+
+public class SnackController {
+	private Snack s = new Snack();
+	
+	public SnackController() {}
+	
+	public String saveData(String kind, String name, String flavor, 
+			int numOf, int price) {
+		s.setKind(kind);
+		s.setName(name);
+		s.setFlavor(flavor);
+		try {
+		s.setNumOf(numOf);
+		s.setPrice(price);
+		}catch(MinusArgumentException e) {
+			return e.getMessage()+"\n 저장실패";
+		}
+		return "저장 완료되었습니다.";
+	}
+	public String confirmData() {
+		return s.information();
+	}
+	
+
+}
